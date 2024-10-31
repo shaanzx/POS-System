@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -18,18 +18,48 @@
       rel="stylesheet"
     />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <link rel="stylesheet" href="/css/main.css" />
 
     <title>Order</title>
+
+    <!-- Style -->
+
+    <style>
+      body {
+      }
+
+      .form-container,
+      .table-container {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 1rem;
+      }
+      .form-header {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn-group {
+        display: flex;
+        gap: 10px;
+      }
+    </style>
   </head>
-  <body>
+  <body class="bg-secondary">
     <header>
-        <nav
-        class="navbar navbar-expand-lg bg-body-tertiary bg-info-subtle fw-bold"
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary bg-info-subtle fw-bold px-3 "
       >
+      
         <div class="container-fluid">
           <button
             class="navbar-toggler"
@@ -40,7 +70,9 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon">
+              
+            </span>
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a id="logo-font" class="navbar-brand fw-bold" href="#"
@@ -53,10 +85,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a
-                  id="customer"
-                  class="nav-link "
-                  href="/pages/customer.html"
+                <a id="customer" class="nav-link" href="/pages/customer.html"
                   ><i class="fa-solid fa-user"></i> Customer</a
                 >
               </li>
@@ -66,8 +95,8 @@
                 >
               </li>
               <li class="nav-item">
-                <a id="order" class="nav-link active" href="/pages/order.html"
-                  > <i class="fa-solid fa-cart-plus"></i>Order</a
+                <a id="order" class="nav-link active" href="/pages/order.html">
+                  <i class="fa-solid fa-cart-plus"></i>Order</a
                 >
               </li>
             </ul>
@@ -78,13 +107,251 @@
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-dark w-50" type="submit">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+              <button class="btn btn-outline-dark w-50" type="submit">
+                Search <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </form>
           </div>
         </div>
       </nav>
     </header>
-    <main></main>
+
+    <!-- MAin -->
+
+    <main class="container mt-5">
+      <!-- Invoice Details Form -->
+      <div class="form-container bg-secondary-subtle">
+        <div class="form-header text-success">
+          <i class="fas fa-file-invoice-dollar"></i> Invoice Details
+        </div>
+        <form id="invoiceForm">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="orderId"
+                ><i class="fas fa-id-badge"></i> Order ID</label
+              >
+              <input
+                type="text"
+                id="orderId"
+                class="form-control"
+                placeholder="Order ID"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="orderDate"
+                ><i class="fas fa-calendar-alt"></i> Date</label
+              >
+              <input type="date" id="orderDate" class="form-control" />
+            </div>
+            <div class="col-md-4">
+              <label for="customerNIC"
+                ><i class="fas fa-id-card"></i> Customer NIC</label
+              >
+              <input
+                type="text"
+                id="customerNIC"
+                class="form-control"
+                placeholder="NIC"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="customerId"
+                ><i class="fas fa-user"></i> Customer ID</label
+              >
+              <input
+                type="text"
+                id="customerId"
+                class="form-control"
+                readonly
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="customerName"
+                ><i class="fas fa-user"></i> Customer Name</label
+              >
+              <input
+                type="text"
+                id="customerName"
+                class="form-control"
+                readonly
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="customerAddress"
+                ><i class="fas fa-map-marker-alt"></i> Address</label
+              >
+              <input
+                type="text"
+                id="customerAddress"
+                class="form-control"
+                readonly
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Item Selection Form -->
+      <div class="form-container bg-secondary-subtle">
+        <div class="form-header text-primary">
+          <i class="fas fa-box"></i> Item Selection
+        </div>
+        <form id="itemSelectionForm">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="itemSearch"
+                ><i class="fas fa-search"></i> Search Item</label
+              >
+              <input
+                type="text"
+                id="itemSearch"
+                class="form-control"
+                placeholder="Search by name or code"
+              />
+            </div>
+            <div class="col-md-2">
+              <label for="itemCode"
+                ><i class="fas fa-barcode"></i> Item Code</label
+              >
+              <input type="text" id="itemCode" class="form-control" readonly />
+            </div>
+            <div class="col-md-2">
+              <label for="itemName"><i class="fas fa-box"></i> Item Name</label>
+              <input type="text" id="itemName" class="form-control" readonly />
+            </div>
+            <div class="col-md-2">
+              <label for="itemPrice"
+                ><i class="fas fa-dollar-sign"></i> Price</label
+              >
+              <input type="text" id="itemPrice" class="form-control" readonly />
+            </div>
+            <div class="col-md-2">
+              <label for="itemQty"
+                ><i class="fas fa-sort-amount-up"></i> Qty on Hand</label
+              >
+              <input type="text" id="itemQty" class="form-control" readonly />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="orderQty"
+                ><i class="fas fa-box-open"></i> Order Qty</label
+              >
+              <input
+                type="number"
+                id="orderQty"
+                class="form-control"
+                placeholder="Order Quantity"
+              />
+            </div>
+            <div class="col-md-2">
+              <button
+                type="button"
+                class="btn btn-primary mt-4 w-100"
+                onclick="addItem()"
+              >
+                <i class="fas fa-cart-plus"></i> Add Item
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Order Table -->
+      <div class="table-container mt-4 bg-secondary-subtle">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Item Code</th>
+              <th>Description</th>
+              <th>Unit Price</th>
+              <th>Order Qty</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody">
+            <!-- Sample row -->
+            <tr>
+              <td>IC001</td>
+              <td>Item 01</td>
+              <td>500.00</td>
+              <td>2</td>
+              <td>1000.00</td>
+              <td>
+                <button class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash-alt"></i> Remove
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Cash Payment Form -->
+      <div class="form-container bg-secondary-subtle">
+        <div class="form-header text-info-emphasis">
+          <i class="fas fa-cash-register"></i> Cash Payment
+        </div>
+        <form id="cashForm">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="totalAmount"
+                ><i class="fas fa-dollar-sign"></i> Total Amount</label
+              >
+              <input
+                type="text"
+                id="totalAmount"
+                class="form-control"
+                readonly
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="customerCash"
+                ><i class="fas fa-money-bill-wave"></i> Cash</label
+              >
+              <input
+                type="number"
+                id="customerCash"
+                class="form-control"
+                placeholder="Enter Cash"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="discount"
+                ><i class="fas fa-percent"></i> Discount</label
+              >
+              <input
+                type="number"
+                id="discount"
+                class="form-control"
+                placeholder="Discount (%)"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="balance"
+                ><i class="fas fa-money-check-alt"></i> Balance</label
+              >
+              <input type="text" id="balance" class="form-control" readonly />
+            </div>
+            <div class="col-md-4">
+              <button
+                type="button"
+                class="btn btn-success mt-4 w-100"
+                onclick="purchaseOrder()"
+              >
+                <i class="fas fa-shopping-bag"></i> Purchase
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
     <footer></footer>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
